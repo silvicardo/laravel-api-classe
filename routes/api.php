@@ -18,8 +18,10 @@ Route::get('/', function() {
 });
 
 //Products Routes
-Route::get('/products', 'Api\ProductController@index');
-Route::post('/products', 'Api\ProductController@create');
-Route::get('/products/{id}', 'Api\ProductController@show');
-Route::post('/products/{id}', 'Api\ProductController@update');
-Route::post('/products/{id}/delete', 'Api\ProductController@destroy');
+Route::namespace('Api')->group(function() {
+    Route::get('/products', 'ProductController@index');
+    Route::post('/products', 'ProductController@create');
+    Route::get('/products/{id}', 'ProductController@show');
+    Route::post('/products/{id}', 'ProductController@update');
+    Route::post('/products/{id}/delete', 'ProductController@destroy');
+});
