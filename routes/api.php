@@ -18,7 +18,7 @@ Route::get('/', function() {
 });
 
 //Products Routes
-Route::namespace('Api')->group(function() {
+Route::middleware('api.auth')->namespace('Api')->group(function() {
     Route::get('/products', 'ProductController@index');
     Route::post('/products', 'ProductController@create');
     Route::get('/products/{id}', 'ProductController@show');
