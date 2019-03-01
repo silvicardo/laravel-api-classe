@@ -17,11 +17,17 @@ Route::get('/', function() {
     return 'Ciao Classe 3';
 });
 
+// middleware('api.auth')->
 //Products Routes
-Route::middleware('api.auth')->namespace('Api')->group(function() {
+Route::namespace('Api')->group(function() {
     Route::get('/products', 'ProductController@index');
     Route::post('/products', 'ProductController@create');
     Route::get('/products/{id}', 'ProductController@show');
     Route::post('/products/{id}', 'ProductController@update');
     Route::post('/products/{id}/delete', 'ProductController@destroy');
+
+    Route::get('/categories','CategoryController@index');
+    Route::post('/categories','CategoryController@create');
+    Route::post('/categories/{id}/delete','CategoryController@destroy');
+    Route::get('/categories/{id}','CategoryController@show');
 });
